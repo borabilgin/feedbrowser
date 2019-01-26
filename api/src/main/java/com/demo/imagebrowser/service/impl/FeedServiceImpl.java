@@ -6,10 +6,14 @@ import com.demo.imagebrowser.repository.FeedCategoryRepository;
 import com.demo.imagebrowser.repository.FeedRepository;
 import com.demo.imagebrowser.service.FeedService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
+@Service
 public class FeedServiceImpl implements FeedService {
 
     @Autowired
@@ -34,15 +38,29 @@ public class FeedServiceImpl implements FeedService {
     }
 
     @Override
+    public Boolean categoryExists(String categoryName) {
+        return feedCategoryRepository.findByName(categoryName) != null;
+    }
+
+    @Override
     public FeedCategory addCategory(String categoryName) {
-        FeedCategory category = new FeedCategory();
-        category.setName(categoryName);
-        feedCategoryRepository.save(category);
-        return category;
+        if (!categoryExists(categoryName)) {
+            FeedCategory category = new FeedCategory();
+            category.setName(categoryName);
+            feedCategoryRepository.save(category);
+            return category;
+        } else {
+            return null;
+        }
     }
 
     @Override
     public Feed addFeed(Feed feed) {
         return feedRepository.save(feed);
+    }
+
+    @Override
+    public List<Feed> getAll() {
+        return StreamSupport.stream(feedRepository.findAll().spliterator(), false).collect(Collectors.toList());
     }
 }
