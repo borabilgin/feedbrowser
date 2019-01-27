@@ -24,11 +24,17 @@ public class Role {
     public Role() {
     }
 
+
     public Role(Long id, String description, String roleName) {
+        this(description, roleName);
         this.id = id;
+    }
+
+    public Role(String description, String roleName) {
         this.description = description;
         this.roleName = roleName;
     }
+
 
     public Long getId() {
         return id;

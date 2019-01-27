@@ -29,7 +29,11 @@ public class Feed {
     }
 
     public Feed(Long id, String name, String address, FeedCategory category) {
+        this(name, address, category);
         this.id = id;
+    }
+
+    public Feed(String name, String address, FeedCategory category) {
         this.name = name;
         this.address = address;
         this.category = category;

@@ -37,7 +37,11 @@ public class FeedCategory {
     }
 
     public FeedCategory(Long id, String name) {
+        this(name);
         this.id = id;
+    }
+
+    public FeedCategory(String name) {
         this.name = name;
     }
 

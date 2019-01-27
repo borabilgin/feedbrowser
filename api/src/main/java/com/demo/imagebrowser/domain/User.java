@@ -33,7 +33,11 @@ public class User {
     }
 
     public User(Long id, String username, String password, List<Role> roles) {
+        this(username, password, roles);
         this.id = id;
+    }
+
+    public User(String username, String password, List<Role> roles) {
         this.username = username;
         this.password = password;
         this.roles = roles;
