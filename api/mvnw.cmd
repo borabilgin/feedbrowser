@@ -108,10 +108,10 @@ cd "%EXEC_DIR%"
 
 :endDetectBaseDir
 
-IF NOT EXIST "%MAVEN_PROJECTBASEDIR%\.mvn\jvm.com.demo.imagebrowser.config" goto endReadAdditionalConfig
+IF NOT EXIST "%MAVEN_PROJECTBASEDIR%\.mvn\jvm.com.demo.feedbrowser.config" goto endReadAdditionalConfig
 
 @setlocal EnableExtensions EnableDelayedExpansion
-for /F "usebackq delims=" %%a in ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.com.demo.imagebrowser.config") do set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a
+for /F "usebackq delims=" %%a in ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.com.demo.feedbrowser.config") do set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a
 @endlocal & set JVM_CONFIG_MAVEN_PROPS=%JVM_CONFIG_MAVEN_PROPS%
 
 :endReadAdditionalConfig
